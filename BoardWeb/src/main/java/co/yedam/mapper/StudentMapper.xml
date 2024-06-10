@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper
-  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="co.yedam.mapper.StudentMapper">
 
 	<select id="selectStudent" resultType="co.yedam.vo.Student">
@@ -10,20 +9,28 @@
 		from tbl_student
 		order by std_no
 	</select>
-	
-	<insert id = "insertStudent" parameterType = "co.yedam.vo.Student">
-		insert into tbl_student (std_no,
-		                         std_name,
-		                         phone,
-		                         bld_type)
+
+	<insert id="insertStudent" parameterType="co.yedam.vo.Student">
+		insert into tbl_student
+		(std_no,
+		std_name,
+		phone,
+		bld_type)
 		values(#{stdNo},#{stdName},#{phone},#{bldType})
 	</insert>
-	
-	<update id = "updateStudent" parameterType = "co.yedam.vo.Student">
+
+	<update id="updateStudent" parameterType="co.yedam.vo.Student">
 		update tbl_student
-		set phone = '010-7777-7777'
+		set
+		phone = #{phone}
 		where std_no = #{stdNo}
 	</update>
 	
+	<delete id="deleteStudent" parameterType="co.yedam.vo.Student">
+		delete tbl_student
+		where std_no = #{stdNo}
 	
+	</delete>
+
+
 </mapper>

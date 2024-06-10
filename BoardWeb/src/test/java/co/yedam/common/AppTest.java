@@ -39,6 +39,13 @@ public class AppTest {
 							= mapper.selectStudent();
 		for (Student std1 : list) {
 			System.out.println(std1.toString());
+			
+		// delete
+		std.setStdNo("S0006");
+		
+		mapper.deleteStudent(std);
+		sqlSession.commit();
+		
 		}
 	}
 }
