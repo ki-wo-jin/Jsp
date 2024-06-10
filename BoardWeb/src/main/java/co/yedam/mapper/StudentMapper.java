@@ -1,0 +1,12 @@
+package co.yedam.mapper;
+
+import java.util.List;
+
+import co.yedam.vo.Student;
+
+public interface StudentMapper {
+	public List<Student> selectStudent();
+	public int insertStudent(Student student);
+	public int updateStudent(Student student);
+	
+}
