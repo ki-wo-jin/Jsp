@@ -1,42 +1,65 @@
-<%@page import="java.text.SimpleDateFormat"%>
-<%@page import="co.yedam.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="../public/header.jsp" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
-<%@include file="../public/header.jsp"%>
-<%
-	BoardVO board = (BoardVO) request.getAttribute("board");
-	String paging = (String) request.getAttribute("page");
-	SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일 HH시mm분 ss초");
-	String yyymmdd = sdf.format(board.getCreateDate());
-%>
+<h3>상세화면(board.jsp)</h3>
+<form name = "myFrm" action="removeForm.do">
+	<input type="hidden" value="${board.boardNo }" name="bno">
+	<input type="hidden" value="${page }" name="page">
+	<table class="table">
+		<tr>
+			<th class="col-sm-1">글번호</th>
+			<td class="col-sm-3"><c:out value="${board.boardNo }" /></td>
+			<th class="col-sm-1">조회수</th>
+			<td class="col-sm-2"><c:out value="${board.clickCnt }" /></td>
+		</tr>
+		<tr>
+			<th>제목</th>
+			<td colspan="3"><c:out value="${board.title }" /></td>
+		</tr>
+		<tr>
+			<th>내용</th>
+			<td colspan="3"><textarea readonly cols="80" rows="3" >${board.content }</textarea>
+			</td>
+		</tr>
+		<tr>
+			<th>작성자</th>
+			<td><c:out value="${board.writer }"/></td>
+		</tr>
+		<tr>
+			<th>작성일시</th>
+			<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm:ss" value="${board.createDate }"/></td>
+		</tr>
+		<tr align="right">
+			<td colspan="3">
+				<c:choose>
+					<c:when test="${!empty logId && logId == board.writer}">
+						<button type="button" class="btn btn-warning">수정 페이지</button>
+						<button type="submit" class="btn btn-danger">삭제 페이지</button>
+					</c:when>
+					<c:otherwise>
+						<button type="button" disabled class="btn btn-warning">수정 페이지</button>
+						<button type="submit" disabled class="btn btn-danger">삭제 페이지</button>
+					</c:otherwise>
+				</c:choose>
+					<a href="boardList.do?page=${page }">목록으로 이동하기</a>
+			</td>
+		</tr>
 
-<p><%=board %></p>
-<table class="table">
-	<tr>
-		<th class="col-sm-1">글번호</th>
-		<td class="col-sm-3"><%=board.getBoardNo() %></td>
-		<th class="col-sm-1">조회수</th>
-		<td class="col-sm-2"><%=board.getClickCnt() %></td>
-	</tr>
-	<tr>
-		<th>제목</th>
-		<td colspan="3"><%=board.getTitle() %></td>
-	</tr>
-	<tr>
-		<th>내용</th>
-		<td colspan="3"><textarea readonly cols="80 rows="3"><%=board.getContent() %></textarea>
-		</td>
-	</tr>
-	<tr>
-		<th>작성자</th>
-		<td><%=board.getWriter() %></td>
-	</tr>
-	<tr>
-		<th>작성일시</th>
-		<td><%=yyymmdd %></td>
-	</tr>
-
-</table>
-<a href="boardList.do?page=<%=paging %>">목록으로 이동하기</a>
-<%@include file="../public/footer.jsp"%>
+	</table>
+</form>
+<script>
+	document.querySelector('button.btn-warning').addEventListener('click', function(e){
+		// 삭제화면이동일 경우에는 removeForm.do
+		// 수정화면이동일 경우에는 action="modifyForm.do";
+		document.forms.myFrm.action = "modifyForm.do";
+		document.forms.myFrm.submit();
+	});
+	// 삭제화면이동일 경우에는 removeForm.do
+	// 수정화면이동일 경우에는 action="modifyForm.do";
+	// document.forms.myFrm.action = "modifyForm.do";
+	// document.forms.myFrm.submit();
+</script>
+<jsp:include page="../public/footer.jsp" />

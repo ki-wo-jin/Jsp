@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@include file="../public/header.jsp" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<jsp:include page="../public/header.jsp" />
+
 
 <h3>게시판등록</h3>
-<%
-	String msg = (String) request.getAttribute("message");
-%>
-<%
-	if(msg != null){
-%>		
-	<p><%=msg %></p>
-<%} %>
 
 <form action="boardForm.do">
 <table class = "table">
@@ -18,7 +12,7 @@
 		<th>제목</th><td><input type = "text" name = "title"></td>
 	</tr>
 	<tr>
-		<th>작성자</th><td><input type = "text" name = "writer"></td>
+		<th>작성자</th><td><input type = "text" name = "writer" value =${logId } readonly></td>
 	</tr>
 	<tr>
 		<th>내용</th>
@@ -30,4 +24,4 @@
 </table>
 </form>
 
-<%@include file="../public/footer.jsp" %>
+<jsp:include page="../public/footer.jsp" />
