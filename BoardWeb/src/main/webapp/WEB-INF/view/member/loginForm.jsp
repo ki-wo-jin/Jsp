@@ -4,7 +4,6 @@
 <%@ taglib tagdir="/WEB-INF/tags" prefix="myTag" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<jsp:include page="../public/header.jsp" />
 <h3>로그인화면(loginForm.jsp)</h3>
 <myTag:line/>
 <!--  JSP standard tag library -->
@@ -25,4 +24,3 @@
 	</table>
 </form>
 
-<jsp:include page="../public/footer.jsp" />

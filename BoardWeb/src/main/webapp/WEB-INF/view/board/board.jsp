@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="../public/header.jsp" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <h3>상세화면(board.jsp)</h3>
 <form name = "myFrm" action="removeForm.do">
 	<input type="hidden" value="${board.boardNo }" name="bno">
 	<input type="hidden" value="${page }" name="page">
+	<input type="hidden" value="${searchCondition }" name="searchCondition">
+	<input type="hidden" value="${keyword }" name="keyword">
 	<table class="table">
 		<tr>
 			<th class="col-sm-1">글번호</th>
@@ -44,7 +45,8 @@
 						<button type="submit" disabled class="btn btn-danger">삭제 페이지</button>
 					</c:otherwise>
 				</c:choose>
-					<a href="boardList.do?page=${page }">목록으로 이동하기</a>
+				<buntton type="button" class="btn btn-primary" 
+				onclick="location.href='boardList.do?page=${page}&searchCondition=${searchCondition}&keyword=${keyword}'">목록 이동</buntton>
 			</td>
 		</tr>
 
@@ -62,4 +64,3 @@
 	// document.forms.myFrm.action = "modifyForm.do";
 	// document.forms.myFrm.submit();
 </script>
-<jsp:include page="../public/footer.jsp" />

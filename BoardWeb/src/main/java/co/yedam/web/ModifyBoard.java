@@ -25,6 +25,9 @@ public class ModifyBoard implements Control {
 		String title = req.getParameter("title");
 		String content = req.getParameter("content");
 		String writer = req.getParameter("writer");
+		String paging = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
 		
 		// editBoard메소드의 매개값
 		BoardService svc = new BoardServiceImpl();
@@ -36,9 +39,10 @@ public class ModifyBoard implements Control {
 		bvo.setWriter(writer);
 		
 		if(svc.editBoard(bvo)) {
-			resp.sendRedirect("boardList.do");
+			System.out.println("정상수정...");
+			resp.sendRedirect("boardList.do?page=" + paging + "&searchCondition=" + sc + "&keyword=" + kw);
 		} else {
-			req.getRequestDispatcher("WEB-INF/view/modifyBoardForm.jsp").forward(req, resp);
+			req.getRequestDispatcher("board/modifyBoardForm.tiles").forward(req, resp);
 		}
 	}
 }

@@ -1,6 +1,9 @@
-<!DOCTYPE html>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles" %>
+					<!-- body attribute에 jsp페이지를 위치에 지정 -->
+					<tiles:insertAttribute name="body" />
+<!DOCTYPE html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -14,30 +17,17 @@
         <link href="css/styles.css" rel="stylesheet" />
     </head>
     <body>
-    	<%
-    		String logId = (String) session.getAttribute("logId");
-    	%>
         <div class="d-flex" id="wrapper">
             <!-- Sidebar-->
             <div class="border-end bg-white" id="sidebar-wrapper">
-            	<% if (logId == null) {//세션없으면 %> 
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap(Guest)</div>
-                <% } else { %>
-                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap(<%=logId %>)</div>
-                <% } %>
+                <div class="sidebar-heading border-bottom bg-light">Start Bootstrap</div>
                 <div class="list-group list-group-flush">
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="main.do">메인페이지</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="studentForm.do">학생정보등록화면</a>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="boardList.do">게시글목록</a>
-                    <% if (logId != null) {//세션없으면 %> 
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="addForm.do">게시글등록</a>
-                    <% } else { 
-                    }%>
-                    <% if (logId == null) { %>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="loginForm.do">로그인</a>
-                    <% } else { %>
-                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="logout.do">로그아웃</a>
-                    <% } %>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Shortcuts</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Overview</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Events</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Profile</a>
+                    <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Status</a>
                 </div>
             </div>
             <!-- Page content wrapper-->
@@ -66,3 +56,21 @@
                 </nav>
                 <!-- Page content-->
                 <div class="container-fluid">
+                    <h1 class="mt-4">Simple Sidebar</h1>
+                    <p>The starting state of the menu will appear collapsed on smaller screens, and will appear non-collapsed on larger screens. When toggled using the button below, the menu will change.</p>
+                    <p>
+                        Make sure to keep all page content within the
+                        <code>#page-content-wrapper</code>
+                        . The top navbar is optional, and just for demonstration. Just create an element with the
+                        <code>#sidebarToggle</code>
+                        ID which will toggle the menu when clicked.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="js/scripts.js"></script>
+    </body>
+</html>

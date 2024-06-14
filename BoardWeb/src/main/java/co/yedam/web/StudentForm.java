@@ -12,7 +12,7 @@ public class StudentForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.getRequestDispatcher("WEB-INF/view/studentForm.jsp").forward(req, resp);
+		req.getRequestDispatcher("member/studentForm.tiles").forward(req, resp);
 
 	}
 

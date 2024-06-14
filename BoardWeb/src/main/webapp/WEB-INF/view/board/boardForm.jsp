@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<jsp:include page="../public/header.jsp" />
 
 
 <h3>게시판등록</h3>
@@ -24,4 +23,3 @@
 </table>
 </form>
 
-<jsp:include page="../public/footer.jsp" />

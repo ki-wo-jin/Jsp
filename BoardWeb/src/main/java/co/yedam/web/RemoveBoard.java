@@ -22,9 +22,10 @@ public class RemoveBoard implements Control {
 		req.setCharacterEncoding("UTF-8");
 
 		String no = req.getParameter("bno");
+		String paging = req.getParameter("page");
+		String sc = req.getParameter("searchCondition");
+		String kw = req.getParameter("keyword");
 		
-		SqlSession sqlSession = DataSource.getInstance().openSession();
-		BoardMapper mapper = sqlSession.getMapper(BoardMapper.class);
 		
 		BoardService bvc = new BoardServiceImpl();
 		
@@ -34,11 +35,13 @@ public class RemoveBoard implements Control {
 		
 		if (bvc.removeBoard(Integer.parseInt(no))) {
 			System.out.println("정상삭제...");
-			resp.sendRedirect("boardList.do");
+			System.out.println(sc);
+			System.out.println(kw);
+			resp.sendRedirect("boardList.do?page=" + paging + "&searchCondition=" + sc + "&keyword=" + kw);
 		} else {
 			System.out.println("삭제실패");
 			req.setAttribute("message", "처리중 오류가 발생");
-			req.getRequestDispatcher("WEB-INF/view/boardForm.jsp").forward(req, resp);
+			req.getRequestDispatcher("board/boardForm.tiles").forward(req, resp);
 		}
 		
 	}

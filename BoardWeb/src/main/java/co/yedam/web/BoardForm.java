@@ -33,7 +33,7 @@ public class BoardForm implements Control{
 		if(svc.addBoard(bvo)) {
 			resp.sendRedirect("boardList.do");
 		} else {
-			req.getRequestDispatcher("WEB-INF/view/insertBoardForm.jsp").forward(req, resp);
+			req.getRequestDispatcher("board/insertBoardForm.tiles").forward(req, resp);
 		}
 	}
 }

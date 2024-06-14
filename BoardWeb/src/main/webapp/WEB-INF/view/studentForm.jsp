@@ -1,15 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<jsp:include page="../public/header.jsp" />
 <h3>학생등록화면</h3>
-<%
-	String msg = (String) request.getAttribute("message");
-%>
-<%
-	if(msg != null){
-%>		
-	<p><%=msg %></p>
-<%} %>
 
 <form action="addStudent.do">
 <table class = "table">
@@ -30,4 +21,3 @@
 	</tr>
 </table>
 </form>
-<jsp:include page="../public/footer.jsp" />

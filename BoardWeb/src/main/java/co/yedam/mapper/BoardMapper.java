@@ -1,6 +1,8 @@
 package co.yedam.mapper;
 
 import java.util.List;
+import co.yedam.common.SearchVO;
+
 
 import org.apache.ibatis.annotations.Param;
 
@@ -11,8 +13,8 @@ import co.yedam.vo.BoardVO;
  */
 public interface BoardMapper {
 	List<BoardVO> boardList(); // 전체목록
-	List<BoardVO> boardListPaging(int page); // 페이지별로 5건씩
-	int getTotalCnt(); // 페이징 계산 용도
+	List<BoardVO> boardListPaging(SearchVO search); // 페이지별로 5건씩
+	int getTotalCnt(SearchVO search); // 페이징 계산 용도
 	int insertBoard(BoardVO bvo);
 	int updateBoard(BoardVO bvo); // 수정
 	int deleteBoard(int bno);

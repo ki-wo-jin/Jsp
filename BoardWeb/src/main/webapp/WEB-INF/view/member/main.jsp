@@ -1,19 +1,19 @@
 <%@page import="java.util.List"%>
 <%@page import="co.yedam.vo.Student"%>
 
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<%@include file="header.jsp" %>
 
 	<h3>main 페이지</h3>
 	<%
 		Student student = (Student) request.getAttribute("student");
 		List<Student> list = (List<Student>) request.getAttribute("studentList");
 	%>
-	<p>학생번호: <%= student.getStdNo() %></p>
-	<p>학생이름: <%= student.getStdName() %></p>
-	<p>전화번호: <%= student.getPhone() %></p>
+	<p>학생번호: ${student.stdNo }</p>
+	<p>학생이름: ${student.stdName }</p>
+	<p>전화번호: ${student.phone }</p>
 	
 	<h3>학생목록</h3>
 	<ul>
@@ -22,4 +22,3 @@
 		<% } %>
 	</ul>
 
-<%@include file="footer.jsp" %>
