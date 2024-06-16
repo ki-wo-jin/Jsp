@@ -56,6 +56,12 @@ public class BoardServiceImpl implements BoardService{
 	public boolean checkMember(String id, String pw) {
 		return mapper.selectMember(id, pw) == 1;
 	}
+	
+	@Override
+	public boolean addMember(String id, String pw, String name) {
+		return mapper.insertMember(id, pw, name) == 1;
+	}
+	
 
 	
 }

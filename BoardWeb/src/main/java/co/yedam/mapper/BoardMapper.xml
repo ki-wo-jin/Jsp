@@ -107,4 +107,9 @@
 		and user_pw = #{pw}
 	</select>
 
+	<insert id="insertMember" parameterType="co.yedam.vo.BoardVO">
+		insert into member_tbl(user_id, user_pw, name)
+		values( #{id}, #{pw}, #{name})
+	</insert>
+
 </mapper>

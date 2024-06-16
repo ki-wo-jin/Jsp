@@ -22,4 +22,5 @@ public interface BoardMapper {
 	
 	// 회원id , 회원비번
 	int selectMember(@Param("id") String id, @Param("pw") String pw);
+	int insertMember(@Param("id") String id, @Param("pw") String pw, @Param("name") String name);
 }

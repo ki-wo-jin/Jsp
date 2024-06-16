@@ -25,6 +25,8 @@ import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.RemoveBoard;
 import co.yedam.web.RemoveForm;
+import co.yedam.web.SignUp;
+import co.yedam.web.SignUpForm;
 import co.yedam.web.StudentForm;
 
 // front -> 요청url(*.do) - 실행컨트롤 매칭
@@ -70,6 +72,11 @@ public class FrontController extends HttpServlet {
 		map.put("/login.do", new LoginControl());
 		// 로그아웃
 		map.put("/logout.do", new LogoutControl());
+		
+		//회원가입화면
+		map.put("/signUpForm.do", new SignUpForm());
+		//회원가입기능
+		map.put("/signUp.do", new SignUp());
 	}
 	
 	@Override
