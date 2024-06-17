@@ -99,16 +99,15 @@
 		where board_no = #{boardNo}
 	</update>
 
-	<select id="selectMember" resultType="int">
-		select count(1)
-		from
-		member_tbl
+	<select id="selectMember" resultType="co.yedam.vo.MemberVO">
+		select *
+		from  member_tbl
 		where user_id = #{id}
-		and user_pw = #{pw}
+		and   user_pw = #{pw}
 	</select>
 
 	<insert id="insertMember" parameterType="co.yedam.vo.BoardVO">
-		insert into member_tbl(user_id, user_pw, name)
+		insert into member_tbl(user_id, user_pw, user_name)
 		values( #{id}, #{pw}, #{name})
 	</insert>
 

@@ -20,11 +20,13 @@ import co.yedam.web.LoginControl;
 import co.yedam.web.LoginForm;
 import co.yedam.web.LogoutControl;
 import co.yedam.web.MainControl;
+import co.yedam.web.MemberList;
 import co.yedam.web.ModifyBoard;
 import co.yedam.web.ModifyForm;
 import co.yedam.web.ProductControl;
 import co.yedam.web.RemoveBoard;
 import co.yedam.web.RemoveForm;
+import co.yedam.web.ScriptForm;
 import co.yedam.web.SignUp;
 import co.yedam.web.SignUpForm;
 import co.yedam.web.StudentForm;
@@ -77,6 +79,12 @@ public class FrontController extends HttpServlet {
 		map.put("/signUpForm.do", new SignUpForm());
 		//회원가입기능
 		map.put("/signUp.do", new SignUp());
+		
+		// 회원목록
+		map.put("/memberList.do", new MemberList());
+		
+		// 자바스크립트
+		map.put("/script.do", new ScriptForm());
 	}
 	
 	@Override
