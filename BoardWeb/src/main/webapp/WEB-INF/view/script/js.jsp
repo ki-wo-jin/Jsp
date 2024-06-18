@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!-- script/js.jsp -->
+<div id = "dom">
 <h3>자바스크립트 연습</h3>
 <ul id='fruit'>
 	<li>apple</li>
@@ -41,5 +42,46 @@
    <tbody id = "memberList"></tbody>
 </table>
 
+<select id = "selectMonth">
+	<option value = "5">5월</option>
+	<option value = "6" selected>6월</option>
+	<option value = "7">7월</option>
+</select>
+</div>
+
+<table class="table">
+   <tr>
+      <th>사번</th><td><input id = "empNo"></td>
+   </tr>
+   <tr>
+      <th>사원명</th><td><input id = "empName"></td>
+   </tr>
+   <tr>
+      <th>이메일</th><td><input id = "empMail"></td>
+   </tr>
+   <tr>
+      <th>급여</th><td><input id = "empSalary"></td>
+   </tr>
+   <tr>
+      <td colspan = "2">
+	      <button id = "EmpAddBtn" class ="btn btn-primary">추가</button>
+      </td>
+   </tr>
+</table>
+
+<table class="table">
+	<thead>
+		<tr>
+			<th>사번</th>
+			<th>이름(firstname)</th>
+			<th>이메일</th>
+			<th>급여</th>
+    	</tr>
+    </thead>
+   <tbody id = "list"></tbody>
+</table>
+
+<div id = "show"></div>
+
 <script src="js/data.js"></script>
-<script src="js/dom1.js"></script>
+<script src="js/obj1.js"></script>
