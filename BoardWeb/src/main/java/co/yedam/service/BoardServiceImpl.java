@@ -62,6 +62,31 @@ public class BoardServiceImpl implements BoardService{
 	public boolean addMember(String id, String pw, String name) {
 		return mapper.insertMember(id, pw, name) == 1;
 	}
+
+	@Override
+	public List<MemberVO> memberList() {
+		return mapper.memberList();
+	}
+
+	@Override
+	public boolean addMemberAjax(MemberVO mvo) {
+		return mapper.insertMemberAjax(mvo) == 1;
+	}
+
+	@Override
+	public boolean checkMemberId(String id) {
+		return mapper.selectMemberAjax(id) == 1;
+	}
+
+	@Override
+	public boolean removeMemberId(String id) {
+		return mapper.deleteMemberAjax(id) == 1;
+	}
+
+	@Override
+	public boolean editMemberId(MemberVO mvo) {
+		return mapper.updateMemberAjax(mvo) == 1;
+	}
 	
 
 	
