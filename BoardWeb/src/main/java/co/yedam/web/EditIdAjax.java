@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import co.yedam.common.Control;
 import co.yedam.service.BoardService;
 import co.yedam.service.BoardServiceImpl;
+import co.yedam.vo.MemberVO;
 
 public class EditIdAjax implements Control {
 
@@ -18,11 +19,16 @@ public class EditIdAjax implements Control {
 		String name = req.getParameter("name");
 		String pw = req.getParameter("pass");
 		
+		MemberVO mvo = new MemberVO();
+		mvo.setUserId(id);
+		mvo.setUserPw(pw);
+		mvo.setUserName(name);
+		
 		BoardService svc = new BoardServiceImpl();
 		if(svc.checkMemberId(id)) { // {"retCode": "Exist"}
-			resp.getWriter().print("{\"retCode\": \"Exist\"}");
+			resp.getWriter().print("{\"retCode\": \"SUCCESS\"}");
 		} else {
-			resp.getWriter().print("{\"retCode\": \"Not Exist\"}");
+			resp.getWriter().print("{\"retCode\": \"NG\"}");
 			
 		} 
 	}

@@ -94,17 +94,21 @@ document.getElementById('modBtn').addEventListener('click', function(){
 	modAjax.open('get', 'modIdAjax.do?id=' + id + '&name=' + name + '&pw=' + pass);
 	modAjax.send();
 	modAjax.onload(function() {
-		
+		if(result.retCode == 'SUCCESS'){
+			// 수정이 안됐으면 화면수정X
+			let targetTr = document.getElementById(id);
+			targetTr.children[1].innerHTML = name;
+			targetTr.children[2].innerHTML = pass;
+
+			// 모달창 닫기
+			document.getElementById('myModal').style.display = 'none';
+			
+		} else {
+			alert("실패");
+		}
 	});
 	
 	// 정상적으로 정보가 업데이트되면 화면 수정
-	// 수정이 안됐으면 화면수정X
-	let targetTr = document.getElementById(id); 
-	targetTr.children[1].innerHTML = name;
-	targetTr.children[2].innerHTML = pass;
-	
-	// 모달창 닫기
-	document.getElementById('myModal').style.display = 'none';
 	
 });
 
