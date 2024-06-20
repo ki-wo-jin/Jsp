@@ -91,9 +91,10 @@ document.getElementById('modBtn').addEventListener('click', function(){
 	
 	// ajax 생성
 	const modAjax = new XMLHttpRequest();
-	modAjax.open('get', 'modIdAjax.do?id=' + id + '&name=' + name + '&pw=' + pass);
+	modAjax.open('get', 'editIdAjax.do?id=' + id + '&name=' + name + '&pw=' + pass);
 	modAjax.send();
-	modAjax.onload(function() {
+	modAjax.onload = function() {		
+		let result = JSON.parse(modAjax.responseText);
 		if(result.retCode == 'SUCCESS'){
 			// 수정이 안됐으면 화면수정X
 			let targetTr = document.getElementById(id);
@@ -106,7 +107,7 @@ document.getElementById('modBtn').addEventListener('click', function(){
 		} else {
 			alert("실패");
 		}
-	});
+	}
 	
 	// 정상적으로 정보가 업데이트되면 화면 수정
 	
