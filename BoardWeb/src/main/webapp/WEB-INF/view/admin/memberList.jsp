@@ -6,7 +6,7 @@
 
 <ul>
 <c:forEach var="member" items = "${memberList }">
-  <li> id: ${member.userId } ${!empty member.image ? '<img width="200px" src="images/개2.jpg" >' : ''} 
+  <li> id: ${member.userId } <img width='200px' src='images/${member.image }'>
   </li>
 </c:forEach>
 </ul>
