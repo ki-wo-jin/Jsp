@@ -98,6 +98,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
 			</select></td>
 		</tr>
 		<tr>
+			<th>파일</th>
+			<td><input type="file" id="myPic"></td>
+		</tr>
+		<tr>
 			<td colspan="2">
 				<button id="addBtn" class="btn btn-primary">등록</button>
 				<button id="removeBtn" class="btn btn-danger">삭제</button>

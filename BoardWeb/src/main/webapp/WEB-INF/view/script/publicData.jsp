@@ -11,6 +11,9 @@
 	placeholder="ex)'동구' 입력하고 검색하면 동구를 포함한 목록이 출력 ">
 <button id="findBtn">검색</button>
 
+<button id="centerDB">센터DB생성</button>
+
+
 <table class="table">
 	<thead>
 		<tr>

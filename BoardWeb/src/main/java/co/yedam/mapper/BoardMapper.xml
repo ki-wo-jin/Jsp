@@ -106,9 +106,9 @@
 		and   user_pw = #{pw}
 	</select>
 
-	<insert id="insertMember" parameterType="co.yedam.vo.BoardVO">
-		insert into member_tbl(user_id, user_pw, user_name)
-		values( #{id}, #{pw}, #{name})
+	<insert id="insertMember" parameterType="co.yedam.vo.MemberVO">
+		insert into member_tbl(user_id, user_pw, user_name, image)
+		values( #{userId}, #{userPw}, #{userName}, #{image})
 	</insert>
 	
 	<select id="memberList" resultType ="co.yedam.vo.MemberVO">

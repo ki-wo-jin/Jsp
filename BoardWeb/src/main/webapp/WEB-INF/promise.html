@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>Promise 객체</p>
+	<script>
+		setTimeout(function (){
+			console.log('1');
+			setTimeout(function(){
+				console.log('2');
+				setTimeout(function(){
+					console.log('3');
+				});
+			});
+		});
+
+	  async function promiseFunc(){
+		  
+		new Promise((resolve, reject) =>{
+			setTimeout(function() {
+				reject('Fail');
+			}, 1000);
+		})
+		.then(function (result) {
+		console.log('result: ',result);
+		})
+		.catch(function (err) {
+		console.log('err: ', err);
+		});
+	  }
+
+	  promiseFunc();
+	</script>
+
+</body>
+</html>

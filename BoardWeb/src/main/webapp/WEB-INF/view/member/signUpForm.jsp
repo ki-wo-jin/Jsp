@@ -8,12 +8,13 @@
 <myTag:line/>
 <!--  JSP standard tag library -->
 
-<form action="signUp.do" style="width:700px">
+<form action="signUp.do" style="width:700px" method="post" enctype="multipart/form-data">
 	<table class="table" border="1">
 		<tr>
 			<th>이름</th>
 			<td><input type="text" name="name"></td>
 		</tr>
+
 		<tr>
 			<th>아이디</th>
 			<td><input type="text" name="id"></td>
@@ -25,6 +26,10 @@
 			<td><input type="text" name="pw"></td>
 			<th>비밀번호 확인</th>
 			<td><input type="text" name="pw2"></td>
+		</tr>
+		<tr>
+			<th>이미지</th>
+			<td><input type="file" name="myImage"></td>
 		</tr>
 		<tr style="text-align: center;">
 			<td colspan="2"><input type="submit" value="가입하기" class= "btn btn-primary"></td>

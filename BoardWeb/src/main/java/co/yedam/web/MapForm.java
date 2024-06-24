@@ -7,18 +7,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import co.yedam.common.Control;
-import co.yedam.service.BoardService;
-import co.yedam.service.BoardServiceImpl;
 
-public class MemberList implements Control {
+public class MapForm implements Control {
 
 	@Override
 	public void exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		BoardService svc = new BoardServiceImpl();
-		req.setAttribute("memberList", svc.memberList());
-		req.getRequestDispatcher("admin/memberList.tiles").forward(req, resp);
-		
-		
+		req.getRequestDispatcher("WEB-INF/view/script/map.jsp").forward(req, resp);
+
 	}
 
 }
