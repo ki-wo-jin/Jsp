@@ -23,8 +23,7 @@
 			<th>주소</th>
 		</tr>
 	</thead>
-	<tbody id="centerList">
-		</tbdoy>
+	<tbody id="centerList" >
 </table>
 
 <script src="js/public.js"></script>

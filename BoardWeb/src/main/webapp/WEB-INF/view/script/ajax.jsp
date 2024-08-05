@@ -118,6 +118,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 				<th>이름</th>
 				<th>비밀번호</th>
 				<th>권한</th>
+				<th>이미지</th>
 				<th>삭제</th>
 			</tr>
 		</thead>

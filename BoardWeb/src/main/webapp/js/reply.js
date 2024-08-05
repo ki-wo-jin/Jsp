@@ -6,6 +6,7 @@
 let page = 1;
 svc.replyList({bno, page }, replyListFnc );
 
+
 // 댓글등록 이벤트
 document.getElementById('addReply').addEventListener('click', addReplyFnc);
 

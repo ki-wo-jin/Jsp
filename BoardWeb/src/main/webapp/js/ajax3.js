@@ -12,12 +12,13 @@ xthp.onload = function() {
 	});
 }
 // json 문자열의 필드이름을 활용
-const fields = ['userId', 'userName', 'userPw', 'responsibility'];
+const fields = ['userId', 'userName', 'userPw', 'responsibility', 'image'];
 function makeRow(obj = {}) {
 	let tr = document.createElement('tr');
 	tr.setAttribute('id', obj.userId); // <tr id='user01' ...>
 	tr.addEventListener('dblclick', function(e){
 		document.getElementById('myModal').style.display = 'block';
+		
 		// 선택된 사용자의 이름, 비번을 모달에 출력
 		console.log(e, this);
 		document.getElementById('modify_id').value = this.children[0].innerHTML;
@@ -26,7 +27,19 @@ function makeRow(obj = {}) {
 	})
 	fields.forEach(fields => {
 		let td = document.createElement('td');
-		td.innerHTML = obj[fields];
+		let img = document.createElement("img");
+		if(fields == "image"){
+			if(obj.image != "undefined"){
+				img.setAttribute("src", `images/${obj.image}`);
+				img.setAttribute("width", "50px");
+				td.appendChild(img);
+			} else {
+				td.innerHTML = "";
+			}
+		}else{
+			td.innerHTML = obj[fields];
+
+		}
 		tr.appendChild(td);
 	})
 	let td = document.createElement('td');
@@ -114,32 +127,33 @@ document.getElementById('modBtn').addEventListener('click', function(){
 });
 
 
-// 등록이벤트
+// 등록이벤트.
 document.getElementById('addBtn').addEventListener('click', function() {
-	let id = document.getElementById('uid').value;
-	let pw = document.getElementById('upw').value;
-	let name = document.getElementById('uname').value;
-	let auth = document.getElementById('auth').value;
+	const formData = new FormData(); // form-data처리.
+	const fileField = document.querySelector('#myPic');
 
-	const addAjax = new XMLHttpRequest();
-	let url = 'addAjax.do?id=' + id + '&pw=' + pw + '&name=' + name + '&auth=' + auth;
-	addAjax.open('get', url);
-	addAjax.send();
-	addAjax.onload = function() {
-		let result = JSON.parse(addAjax.responseText);
-		if (result.retCode == 'OK') {
-			let newMem = { userId: id, userName: name, userPw: pw, resposibility: auth }
-			alert(result.retMsg);
-			document.getElementById('list').appendChild(makeRow(newMem));
-			document.getElementById('uid').value = "";
-			document.getElementById('upw').value = "";
-			document.getElementById('uname').value = "";
-			document.getElementById('auth').value = "";
-		} else {
-			alert('실패');
-		}
+	formData.append("id", document.getElementById('uid').value);
+	formData.append("pw", document.getElementById('upw').value);
+	formData.append("name", document.getElementById('uname').value);
+	formData.append("myImage", fileField.files[0]);
+	
+	upload(formData);
+})
+
+// fetch 파일 업로드
+async function upload(formData) {
+	try {
+		const response = await fetch("signUp.do", {
+			method: "PUT",
+			body: formData,
+		});
+		const result = await response.json();
+		console.log("성공:", result);
+	} catch (error) {
+		console.error("실패:", error);
 	}
-});
+} // end of upload(formData).
+
 
 
 // id 체크 이벤트

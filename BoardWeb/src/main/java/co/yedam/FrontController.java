@@ -126,6 +126,8 @@ public class FrontController extends HttpServlet {
 		// 센터차트
 		map.put("/chartForm.do", new ChartForm());
 		map.put("/centerChart.do", new CenterChart());
+		
+	
 	}
 	
 	@Override

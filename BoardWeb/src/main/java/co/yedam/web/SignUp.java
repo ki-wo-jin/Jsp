@@ -39,13 +39,20 @@ public class SignUp implements Control {
 		
 		BoardService svc = new BoardServiceImpl();
 		
-		if(svc.addMemberImage(mvo)) {
-			// 회원가입.
-			System.out.println("정상가입...");
-			resp.sendRedirect("memberList.do");
-		} else {
-			resp.sendRedirect("signUp.do");
-			System.out.println("가입 중 오류발생...");
+		
+		try {
+			if(svc.addMemberImage(mvo)) {
+				if(req.getMethod().equals("POST")) {
+					resp.sendRedirect("memberList.do");
+				} else if (req.getMethod().equals("PUT")){
+					resp.getWriter().print("{\"retCode\": \"OK\"}");
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			if(req.getMethod().equals("PUT")) {
+				resp.getWriter().print("{\"retCode\": \"NG\"}");
+			}
 		}
 		
 		
