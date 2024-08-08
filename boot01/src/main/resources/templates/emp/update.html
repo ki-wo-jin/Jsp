@@ -2,40 +2,71 @@
 <html xmlns:th="https://www.thymeleaf.org/">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Update</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
-	<div>
+	<form name = "updateForm" th:object="${emp}">
 		<h3>사원 정보 수정</h3>
 		<div>
 			<label for="eid">사원번호</label>
-			<input type="text" id="eid" th:value="${emp.employeeId}">
+			<input type="text" id="eid" name="employeeId" th:field="*{employeeId}" readonly>
 		</div>
 		<div>
 			<label for="ename">이름</label>
-			<input type="text" id="ename" th:value="${emp.firstName}">
+			<input type="text" id="ename" name="lastName" th:field="*{lastName}">
 		</div>
 		<div>
 			<label for="email">이메일</label>
-			<input type="email" id="eamil" th:value="${emp.email}">
+			<input type="email" id="eamil" name="email" th:field="*{email}">
 		</div>
 		<div>
 			<label for="hDate">입사일</label>
-			<input type="date" id="hDate" th:value="${#dates.format(emp.hireDate, 'yyyy-MM-dd')}" >
+			<input type="date" id="hDate" name="hireDate" th:field="*{hireDate}" >
 		</div>
 		<div>
 			<label for="job">업무</label>
-			<input type="text" id="job" th:value="${emp.jobId}" >
+			<input type="text" id="job" name="jobId" th:field="*{jobId}" >
 		</div>
 		<div>
 			<label for="sal">급여</label>
-			<input type="number" id="sal" th:value="${emp.salary}" >
+			<input type="number" id="sal" name="salary" th:field="*{salary}" >
 		</div>
 		<div>
-			<button type="button" th:onclick="|location.href='@{/empInfo(employeeId=${emp.employeeId})}'|">완료</button>
-			<button type="button" th:onclick="|location.href='@{/empList}'|">목록</button>
-			<button type="button" th:onclick="">삭제</button>
+			<button type="button" id="updateBtn">저장</button>
 		</div>
-	</div>
+	</form>
 </body>
+<script>
+	$('#updateBtn').on('click', updateAjax)
+	
+	function updateAjax(event) {
+		//1) 보낼 데이터 가져오기		
+		let dataObj = getFormData();
+		//2) AJAX
+		$.ajax('empUpdate', {
+			type : 'post', //method
+			contentType : 'application/json',
+			data : JSON.stringify(dataObj)  //body
+			//data : dataObj  //body
+		})
+		.done(result => {
+			console.log(result);
+		})
+		.fail(err => console.log(err));
+	}
+	
+	function getFormData(){
+		let formAry = $('form[name="updateForm"]').serializeArray();
+		let formObj = {};
+		$.each(formAry, function(idx, tag){
+			//console.log(idx, tag);
+			//console.log(tag.name + ' : ' + tag.value);
+			formObj[tag.name] = tag.value;
+		});
+		//console.clear();
+		//console.log(formObj);
+		return formObj;
+	}
+</script>
 </html>
