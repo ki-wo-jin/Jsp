@@ -14,8 +14,8 @@ public class AaaServiceImpl implements AaaService{
 	AaaServiceImpl(AaaMapper aaaMapper){
 		this.aaaMapper = aaaMapper;
 	}
-	@Override
 	@Transactional
+	@Override
 	public void insert() {
 		aaaMapper.aaaInsert("101");
 		aaaMapper.aaaInsert("a101");
