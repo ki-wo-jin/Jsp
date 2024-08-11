@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org/"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{common/layouts/default_layout}"
+      layout:fragment="Content">
+<head>
+<meta charset="UTF-8">
+
+<title>Insert</title>
+</head>
+<body>
+	<form name = "insertForm" th:action="@{/deptInsert}" method="post">
+		<h3>부서 정보 등록</h3>
+		<div>
+			<label for="did">부서번호</label>
+			<input type="text" id="did" name="departmentId" readonly>
+		</div>
+		<div>
+			<label for="dname">부서이름</label>
+			<input type="text" id="dname" name="departmentName" readonly>
+		</div>
+		<div>
+			<label for="mid">매니저번호</label>
+			<input type="text" id="mid" name="managerId" readonly>
+		</div>
+		<div>
+			<label for="lid">위치번호</label>
+			<input type="text" id="lid" name="locationId" readonly>
+		</div>
+		<div>
+			<button type="submit">등록</button>
+		</div>
+	</form>
+</body>
+<script>
+	$('form[name="insertForm"]').on('submit', insertHandler);
+	
+	function insertHandler(){
+		event.preventDefault();
+		
+		let name = $('input[name="departmentName"]');
+		if(name.val() == ''){
+			alert('부서이름이 입력되지 않았습니다');
+			name.focus();
+			return;
+		}
+		
+		let managerId = $('input[name="managerId"]');
+		if(managerId.val() == ''){
+			alert('관리자번호가 입력되지 않았습니다');
+			managerId.focus();
+			return;
+		}
+		
+		let locationId = $('input[name="locationId"]');
+		if(locationId.val() == ''){
+			alert('위치번호가 입력되지 않았습니다');
+			locationId.focus();
+			return;
+		}
+		
+		insertForm.submit();
+	}
+</script>
+</html>
