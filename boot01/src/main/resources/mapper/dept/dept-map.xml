@@ -50,9 +50,9 @@
 	<update id="updateDeptInfo">
 		UPDATE departments
 		SET
-			departmentName = #{dept.departmentName},
-			managerId    = #{dept.managerId},
-			locationId    = #{dept.departmentName}
+			department_name = #{dept.departmentName},
+			manager_id    = #{dept.managerId},
+			location_id    = #{dept.locationId}
 		WHERE department_id = #{id}
 	</update>
 	

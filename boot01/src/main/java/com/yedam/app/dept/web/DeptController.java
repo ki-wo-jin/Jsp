@@ -42,7 +42,7 @@ public class DeptController {
 		return "dept/insert";
 	}
 	
-	@PostMapping("deptInser")
+	@PostMapping("deptInsert")
 	public String deptInsertProcess(DeptVO deptVO) {
 		int did = deptService.deptInsert(deptVO);
 		String url = null;
