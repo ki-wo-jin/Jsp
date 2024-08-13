@@ -18,7 +18,7 @@ public class LoginUserVO implements UserDetails{
 	private UserVO userVO;
 	
 	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
+	public Collection<? extends GrantedAuthority> getAuthorities() { // 메소드 Collection = index 타입만 사용가능
 		List<GrantedAuthority> auths = new ArrayList<>();
 		auths.add(new SimpleGrantedAuthority(userVO.getRoleName()));
 		return auths;
